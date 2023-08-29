@@ -1,0 +1,14 @@
+version: '2'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: stream-labs-mysql
+    # volumes:
+    #   - ./data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=stream-labs
+      - MYSQL_DATABASE=stream-labs
+      - MYSQL_USER=stream-labs
+      - MYSQL_PASSWORD=stream-labs
+    ports:
+      - "8005:3306"

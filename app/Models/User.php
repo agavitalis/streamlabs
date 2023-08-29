@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -21,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'github_token',
+        'github_refresh_token',
     ];
 
     /**
@@ -42,4 +45,36 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Get the donations for this user.
+     */
+    public function donations(): HasMany
+    {
+        return $this->hasMany(Donation::class);
+    }
+
+    /**
+     * Get the followers for this user.
+     */
+    public function followers(): HasMany
+    {
+        return $this->hasMany(Follower::class);
+    }
+
+    /**
+     * Get the subscribers for this user.
+     */
+    public function subscribers(): HasMany
+    {
+        return $this->hasMany(Donation::class);
+    }
+
+    /**
+     * Get the merch_sales for this user.
+     */
+    public function merch_sales(): HasMany
+    {
+        return $this->hasMany(Donation::class);
+    }
 }
