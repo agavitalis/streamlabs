@@ -35,6 +35,18 @@
                             v-model="formData.password"
                         />
                     </div>
+                    <div class="mb-3">
+                        <label for="password_confirm" class="form-label"
+                            >Password</label
+                        >
+                        <input
+                            type="password"
+                            class="form-control"
+                            placeholder="Confirm Password"
+                            required
+                            v-model="formData.password_confirmation"
+                        />
+                    </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">
                             Sign in
@@ -64,16 +76,17 @@ export default {
                 name: "",
                 email: "",
                 password: "",
+                password_confirmation: ""
             },
         };
     },
     methods: {
         handleSignIn() {
             axios
-              .post("/login", this.formData)
+              .post("/api/register", this.formData)
               .then((response) => {
                 console.log("User signed in!");
-                this.$router.push({name: 'uDashboard'});
+                this.$router.push({name: 'dashboard'});
               })
               .catch((error) => console.log(error));
         },

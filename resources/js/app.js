@@ -7,14 +7,13 @@ import RegisterComponent from './components/RegisterComponent.vue';
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-
         {
             path: '/',
             name: 'register',
             component: RegisterComponent
         },
         {
-            path: '/',
+            path: '/dashboard',
             name: 'dashboard',
             component: DashboardComponent
         }
