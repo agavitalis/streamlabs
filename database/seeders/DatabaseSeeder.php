@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
         User::factory()
         ->has(Donation::factory()->count(300), 'donations')
         ->has(Follower::factory()->count(300), 'followers')
-        ->has(Subscriber::factory()->count(3), 'subscribers')
-        ->has(Merch_Sale::factory()->count(3), 'merch_sales')
+        ->has(Subscriber::factory()->count(300), 'subscribers')
+        ->has(Merch_Sale::factory()->count(300), 'merch_sales')
         ->create();
     }
 }

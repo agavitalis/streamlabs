@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
+use App\Models\Donation;
+use App\Models\Follower;
+use App\Models\Merch_Sale;
+use App\Models\Subscriber;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -42,6 +44,11 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        Donation::factory()->count(300)->create(['user_id' => $user->id ]);
+        Follower::factory()->count(300)->create(['user_id' => $user->id ]);
+        Merch_Sale::factory()->count(300)->create(['user_id' => $user->id ]);
+        Subscriber::factory()->count(300)->create(['user_id' => $user->id ]);
 
         event(new Registered($user));
 

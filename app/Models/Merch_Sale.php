@@ -14,6 +14,8 @@ class Merch_Sale extends Model
      *
      * @var array<int, string>
      */
+    protected $table = 'merch_sales';
+    
     protected $fillable = [
         'item_name',
         'amount',
